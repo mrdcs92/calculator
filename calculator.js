@@ -5,7 +5,98 @@
 .value changes contents of the display
 */
 
+var iC = document.querySelector('#insertCalculator');
 
+var inputArea = document.createElement('input');
+inputArea.id = 'inputArea';
+iC.appendChild(inputArea);
+
+var buttons = ['7','8','9','+','4','5','6','-','1','2','3','*','0','.','=','/'];
+
+buttons.forEach(function makeButton(text) {
+    var button = document.createElement('button');
+    button.id = 'button' + text;
+    button.textContent = text;
+    iC.appendChild(button);
+    button.addEventListener("click", buttonPress, false);
+});
+
+function buttonPress(event) {
+    console.log(event.target.innerHTML);
+    switch (event.target.innerHTML) {
+        
+        case '0':
+           document.getElementById('inputArea').value += '0';
+            break;
+        
+        case '1':
+            document.getElementById('inputArea').value += '1';
+            break;
+        
+        case '2':
+            document.getElementById('inputArea').value += '2';
+            break;
+            
+        case '3':
+            document.getElementById('inputArea').value += '3';
+            break;
+            
+        case '4':
+            document.getElementById('inputArea').value += '4';
+            break;
+            
+        case '5':
+            document.getElementById('inputArea').value += '5';
+            break;
+            
+        case '6':
+            document.getElementById('inputArea').value += '6';
+            break;
+        
+        case '7':
+            document.getElementById('inputArea').value += '7';
+            break;
+            
+        case '8':
+            document.getElementById('inputArea').value += '8';
+            break;
+            
+        case '9':
+            document.getElementById('inputArea').value += '9';
+            break;
+            
+        case '+':
+            document.getElementById('inputArea').value += ' + ';
+            break;
+            
+        case '-':
+            document.getElementById('inputArea').value += ' - ';
+            break;
+            
+        case '*':
+            document.getElementById('inputArea').value += ' * ';
+            break;
+            
+        case '/':
+            document.getElementById('inputArea').value += ' / ';
+            break;
+            
+        case '.':
+            document.getElementById('inputArea').value += '.';
+            break;
+        
+        case '=':
+            document.getElementById('inputArea').value = eval(document.getElementById('inputArea').value);
+            break;    
+            
+        default:
+            // code
+    }
+}
+
+//inputArea.innerHTML = 
+
+/*
 var inputArea = document.createElement('input');
 inputArea.id = 'inputArea';
 
@@ -171,12 +262,12 @@ var buttonAdd = document.createElement('button');
 dataAdd.appendChild(buttonAdd);
 buttonAdd.textContent = '+';
 buttonAdd.id = 'buttonAdd';
+*/
 
 
-
-var iC = document.querySelector('#insertCalculator');
+/*
 iC.appendChild(inputArea);
 iC.appendChild(calcTable);
-
+*/
 
 
