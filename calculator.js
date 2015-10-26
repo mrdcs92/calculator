@@ -11,15 +11,17 @@ var inputArea = document.createElement('input');
 inputArea.id = 'inputArea';
 iC.appendChild(inputArea);
 
-var buttons = ['7','8','9','+','4','5','6','-','1','2','3','*','0','.','=','/'];
+var buttons = ['7','8','9','+','4','5','6','-','1','2','3','*','0','.','=','/','(',')','Del','C'];
 
-buttons.forEach(function makeButton(text) {
+function makeButton(text) {
     var button = document.createElement('button');
     button.id = 'button' + text;
     button.textContent = text;
     iC.appendChild(button);
     button.addEventListener("click", buttonPress, false);
-});
+}
+
+buttons.forEach(makeButton);
 
 function buttonPress(event) {
     console.log(event.target.innerHTML);
@@ -86,9 +88,26 @@ function buttonPress(event) {
             break;
         
         case '=':
-            document.getElementById('inputArea').value = eval(document.getElementById('inputArea').value);
+            document.getElementById('inputArea').value = math.eval(document.getElementById('inputArea').value);
             break;    
+        
+        case '(':
+            document.getElementById('inputArea').value += '(';
+            break;
             
+        case ')':
+            document.getElementById('inputArea').value += ')';
+            break;
+            
+        case 'Del':
+            // need to delete last character from string
+            var length = (document.getElementById('inputArea').value).length);
+            break;
+            
+        case 'C':
+            document.getElementById('inputArea').value = '';
+            break;
+        
         default:
             // code
     }
