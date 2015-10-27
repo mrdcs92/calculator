@@ -7,13 +7,17 @@
 
 /*global math*/
 
-var iC = document.querySelector('#insertCalculator');
+var div = document.createElement('div');
+div.id = 'calculator';
+document.body.appendChild(div);
 
 var inputArea = document.createElement('input');
 inputArea.id = 'inputArea';
-iC.appendChild(inputArea);
+div.appendChild(inputArea);
 
-var buttons = ['7','8','9','+','4','5','6','-','1','2','3','*','0','.','=','/','(',')','Del','C'];
+
+
+var buttons = ['7','8','9','+','4','5','6','-','1','2','3','*','0','.','C','/','(',')','Del','='];
 
 buttons.forEach(makeButton);
 
@@ -21,7 +25,7 @@ function makeButton(text) {
     var button = document.createElement('button');
     button.id = 'button' + text;
     button.textContent = text;
-    iC.appendChild(button);
+    div.appendChild(button);
     button.addEventListener("click", buttonPress, false);
 }
 
