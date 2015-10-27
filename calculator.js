@@ -30,28 +30,30 @@ function makeButton(text) {
 }
 
 function buttonPress(event) {
-    console.log(event.target.innerHTML);
-    switch (event.target.innerHTML) {
+    var buttonValue = event.target.textContent;
+    var inputArea = document.getElementById('inputArea');
+    
+    switch (buttonValue) {
         
         case '=':
-            document.getElementById('inputArea').value = math.eval(document.getElementById('inputArea').value);
+            inputArea.value = math.eval(inputArea.value);
             break;    
         
         case 'Del':
-            var length = ((document.getElementById('inputArea').value).length);
-            document.getElementById('inputArea').value = (document.getElementById('inputArea').value).substring(0, length-1);
+            var length = ((inputArea.value).length);
+            inputArea.value = (inputArea.value).substring(0, length-1);
             break;
             
         case 'C':
-            document.getElementById('inputArea').value = '';
+            inputArea.value = '';
             break;
         
         default:
-        if ((event.target.innerHTML) === '+' || (event.target.innerHTML) === '-' || (event.target.innerHTML) === '*' || (event.target.innerHTML) === '/') {
-            (document.getElementById('inputArea').value) += ' ' + (event.target.innerHTML) + ' ';
+        if ((buttonValue) === '+' || (buttonValue) === '-' || (buttonValue) === '*' || (buttonValue) === '/') {
+            (inputArea.value) += ' ' + (buttonValue) + ' ';
         }
         else {
-            (document.getElementById('inputArea').value) += (event.target.innerHTML);
+            (inputArea.value) += (buttonValue);
         }
     }
 }
